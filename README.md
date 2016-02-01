@@ -3,19 +3,19 @@ A node module to help you convert callback-style functions to promises
 
 ## Installation
 
-```
+```js
 npm install --save sb-promisify
 ```
 
 ## API
 
-```
+```js
 export default function promisify(callback)
 ```
 
 ## Example Usage
 
-```
+```js
 'use babel'
 
 import promisify from 'sb-promisify'
