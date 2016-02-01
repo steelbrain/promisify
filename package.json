@@ -1,0 +1,24 @@
+{
+  "name": "sb-promisify",
+  "version": "1.0.0",
+  "description": "Node module for simple promisification",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "apm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/steelbrain/promisify.git"
+  },
+  "keywords": [
+    "promisify",
+    "es6",
+    "promise"
+  ],
+  "author": "steelbrain",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/steelbrain/promisify/issues"
+  },
+  "homepage": "https://github.com/steelbrain/promisify#readme"
+}
