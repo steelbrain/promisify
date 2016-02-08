@@ -4,10 +4,10 @@
 
 module.exports = function promisify(callback: Function): Function {
   return function promisified(){
-    const parameters = arguments
-    const parametersLength = arguments.length + 1
+    const parameters = Array.from(arguments)
+    const parametersLength = parameters.length + 1
     return new Promise((resolve, reject) => {
-      Array.prototype.push.call(parameters, function(error, data) {
+      parameters.push(function(error, data) {
         if (error) {
           reject(error)
         } else resolve(data)
