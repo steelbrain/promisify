@@ -2,7 +2,7 @@
 
 /* @flow */
 
-export default function promisify(callback: Function): Function {
+module.exports = function promisify(callback: Function): Function {
   return function promisified(){
     const parameters = arguments
     const parametersLength = arguments.length + 1
