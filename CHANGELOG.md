@@ -1,4 +1,4 @@
-#### Upcoming
+#### 1.1.0
 
 - Use commonjs exports intead of ES exports
 
