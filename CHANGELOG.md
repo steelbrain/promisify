@@ -1,3 +1,7 @@
+#### 1.1.1
+
+- Support older runtimes by using only Array.from when available and falling back to Array.prototype.slice
+
 #### 1.1.0
 
 - Use commonjs exports intead of ES exports
