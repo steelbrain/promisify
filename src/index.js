@@ -2,14 +2,14 @@
 
 /* @flow */
 
-module.exports = function promisify(callback: Function, throw: boolean = true): Function {
+module.exports = function promisify(callback: Function, throwError: boolean = true): Function {
   return function promisified(){
     const parameters = Array.from ? Array.from(arguments) : Array.prototype.slice.call(arguments)
     const parametersLength = parameters.length + 1
     return new Promise((resolve, reject) => {
       parameters.push(function(error, data) {
         if (error) {
-          if (throw) {
+          if (throwError) {
             reject(error)
           } else resolve(null)
         } else resolve(data)

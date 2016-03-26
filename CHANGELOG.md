@@ -1,6 +1,6 @@
 #### 1.2.0
 
-- Add `throw` parameter
+- Add `throwError` parameter
 
 #### 1.1.1
 

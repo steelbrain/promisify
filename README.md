@@ -10,7 +10,7 @@ npm install --save sb-promisify
 ## API
 
 ```js
-export default function promisify(callback, throw = true)
+export default function promisify(callback, throwError = true)
 ```
 
 ## Example Usage
@@ -32,7 +32,7 @@ readFile('/etc/passwd').then(function(contents) {
 })
 ```
 
-But if you set throw to false, here's how it would react
+But if you set throwError to false, here's how it would react
 
 ```js
 'use babel'
