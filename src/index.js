@@ -2,11 +2,11 @@
 
 /* @flow */
 
-module.exports = function promisify(callback: Function): Function {
+module.exports = function promisify(callback: Function, throwError: boolean = true): Function {
   return function promisified(){
     const parameters = Array.from ? Array.from(arguments) : Array.prototype.slice.call(arguments)
     const parametersLength = parameters.length + 1
-    return new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       parameters.push(function(error, data) {
         if (error) {
           reject(error)
@@ -24,5 +24,11 @@ module.exports = function promisify(callback: Function): Function {
         callback.apply(this, parameters)
       }
     })
+    if (!throwError) {
+      promise = promise.catch(function() {
+        return null
+      })
+    }
+    return promise
   }
 }
