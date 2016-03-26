@@ -10,10 +10,12 @@ npm install --save sb-promisify
 ## API
 
 ```js
-export default function promisify(callback)
+export default function promisify(callback, throw = true)
 ```
 
 ## Example Usage
+
+Here's the default behavior
 
 ```js
 'use babel'
@@ -27,6 +29,25 @@ readFile('/etc/passwd').then(function(contents) {
   console.log(contents.toString('utf8'))
 }, function() {
   console.error('Unable to read file')
+})
+```
+
+But if you set throw to false, here's how it would react
+
+```js
+'use babel'
+
+import promisify from 'sb-promisify'
+import fs from 'fs'
+
+const readFile = promisify(fs.readFile, false)
+
+readFile('/etc/passwd').then(function(contents) {
+  if (contents === null) {
+    console.error('Unable to read file')
+  } else {
+    console.log(contents.toString('utf8'))
+  }
 })
 ```
 
