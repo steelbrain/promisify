@@ -6,12 +6,10 @@ module.exports = function promisify(callback: Function, throwError: boolean = tr
   return function promisified(){
     const parameters = Array.from ? Array.from(arguments) : Array.prototype.slice.call(arguments)
     const parametersLength = parameters.length + 1
-    return new Promise((resolve, reject) => {
+    let promise = new Promise((resolve, reject) => {
       parameters.push(function(error, data) {
         if (error) {
-          if (throwError) {
-            reject(error)
-          } else resolve(null)
+          reject(error)
         } else resolve(data)
       })
       if (parametersLength === 1) {
@@ -26,5 +24,11 @@ module.exports = function promisify(callback: Function, throwError: boolean = tr
         callback.apply(this, parameters)
       }
     })
+    if (!throwError) {
+      promise = promise.catch(function() {
+        return null
+      })
+    }
+    return promise
   }
 }
