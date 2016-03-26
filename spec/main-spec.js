@@ -58,4 +58,22 @@ describe('Promisify', function() {
       })
     })
   })
+  it('has an option to disable the throw behavior', function() {
+    function callback(beep, callback) {
+      if (beep === true) {
+        callback(null, true)
+      }
+      throw new Error('Hello')
+    }
+    waitsForPromise(function() {
+      return promisify(callback, false)(true).then(function(result) {
+        expect(result).toBe(true)
+      })
+    })
+    waitsForPromise(function() {
+      return promisify(callback, false)().then(function(result) {
+        expect(result).toBe(null)
+      })
+    })
+  })
 })
