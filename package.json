@@ -4,7 +4,8 @@
   "description": "Node module for simple promisification",
   "main": "lib/index.js",
   "scripts": {
-    "test": "apm test"
+    "test": "apm test",
+    "compile": "ucompiler go"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,10 @@
   "bugs": {
     "url": "https://github.com/steelbrain/promisify/issues"
   },
-  "homepage": "https://github.com/steelbrain/promisify#readme"
+  "homepage": "https://github.com/steelbrain/promisify#readme",
+  "devDependencies": {
+    "babel-preset-steelbrain": "^2.0.1",
+    "ucompiler": "^3.1.8",
+    "ucompiler-plugin-babel": "^3.1.1"
+  }
 }

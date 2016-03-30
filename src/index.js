@@ -2,7 +2,7 @@
 
 /* @flow */
 
-module.exports = function promisify(callback: Function, throwError: boolean = true): Function {
+function promisify(callback: Function, throwError: boolean = true): Function {
   return function promisified(){
     const parameters = Array.from ? Array.from(arguments) : Array.prototype.slice.call(arguments)
     const parametersLength = parameters.length + 1
@@ -32,3 +32,19 @@ module.exports = function promisify(callback: Function, throwError: boolean = tr
     return promise
   }
 }
+
+function promisifyAll(object: Object, throwError: boolean = true): Object {
+  const duplicate = Object.assign({}, object)
+  for (const item in duplicate) {
+    if (duplicate.hasOwnProperty(item)) {
+      const value = duplicate[item]
+      if (typeof value === 'function') {
+        duplicate[item] = promisify(value, throwError)
+      }
+    }
+  }
+  return duplicate
+}
+
+module.exports = promisify
+module.exports.promisifyAll = promisifyAll

@@ -10,6 +10,7 @@ npm install --save sb-promisify
 ## API
 
 ```js
+export function promisifyAll(object, throwError = true)
 export default function promisify(callback, throwError = true)
 ```
 
