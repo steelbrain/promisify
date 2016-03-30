@@ -76,4 +76,23 @@ describe('Promisify', function() {
       })
     })
   })
+
+  describe('promisifyAll', function() {
+    it('promifies all the functions available on that object', function() {
+      const promisifiedFS = promisify.promisifyAll(require('fs'))
+      waitsForPromise(function() {
+        return promisifiedFS.readFile(__filename).then(function(contents) {
+          return Buffer.isBuffer(contents)
+        })
+      })
+      waitsForPromise(function() {
+        return promisifiedFS.realpath(__filename).then(function(realpath) {
+          expect(realpath).toBe(__filename)
+        })
+      })
+    })
+    it('preserves all the non-function stuff', function() {
+      expect(promisify.promisifyAll({ a: true })).toEqual({ a: true })
+    })
+  })
 })
