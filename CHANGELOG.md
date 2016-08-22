@@ -1,3 +1,10 @@
+#### 2.0.0
+
+- Alter `promisifyAll` behavior to add `${methodName}Async` to given objects instead of replacing them
+- Return `true` if `throwError` is `false` and `undefined` is returned
+- Return `false` if `throwError` is `false` and Error is thrown
+- Export functions in the babel style
+
 #### 1.3.0
 
 - Add `promisifyAll` method
