@@ -1,5 +1,7 @@
 # Promisify
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/steelbrain/promisify.svg)](https://greenkeeper.io/)
+
 A node module to help you convert callback-style functions to promises
 
 ## Installation
