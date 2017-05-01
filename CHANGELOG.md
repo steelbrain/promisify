@@ -1,3 +1,7 @@
+## 2.0.2
+
+- Remove Flow Declarations, Babel, Flow and ESLint config files from npm package
+
 ## 2.0.1
 
 - Remove `spec` dir from `npm` package to fix flow errors in dependent modules
